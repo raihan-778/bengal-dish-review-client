@@ -1,7 +1,36 @@
-import React from "react";
+import { GoogleAuthProvider } from "firebase/auth";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider";
 
 const Register = () => {
+  const { user, googleSignUp, signUp } = useContext(AuthContext);
+
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("clicked");
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signUp(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const handleGoogleSignUp = () => {
+    googleSignUp(googleProvider).then((result) => {
+      const user = result.user;
+      console.log(user).catch((err) => console.error(err));
+    });
+  };
+
   return (
     <div>
       <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100">
@@ -20,6 +49,7 @@ const Register = () => {
         </p>
         <div className="my-6 space-y-4">
           <button
+            onClick={handleGoogleSignUp}
             aria-label="Login with Google"
             type="button"
             className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
@@ -40,9 +70,8 @@ const Register = () => {
           <hr className="w-full dark:text-gray-400" />
         </div>
         <form
-          novalidate=""
-          action=""
-          className="space-y-8 ng-untouched ng-pristine ng-valid"
+          onSubmit={handleSubmit}
+          className="space-y-8 ng-untouched  ng-pristine ng-valid"
         >
           <div className="space-y-4">
             <div className="space-y-2">
@@ -53,7 +82,7 @@ const Register = () => {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="leroy@jenkins.com"
+                placeholder="Enter Your Email"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
               />
             </div>
@@ -62,29 +91,21 @@ const Register = () => {
                 <label for="password" className="text-sm">
                   Password
                 </label>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="text-xs hover:underline dark:text-gray-400"
-                >
-                  Forgot password?
-                </a>
               </div>
               <input
                 type="password"
                 name="password"
                 id="password"
-                placeholder="*****"
+                placeholder="Enter Your Password"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
               />
             </div>
           </div>
-          <button
-            type="button"
-            className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900"
-          >
-            Sign in
-          </button>
+          <input
+            type="submit"
+            value="submit"
+            className="w-full px-8 py-3 font-semibold btn btn-success rounded-md dark:bg-violet-400 dark:text-gray-900"
+          />
         </form>
       </div>
     </div>

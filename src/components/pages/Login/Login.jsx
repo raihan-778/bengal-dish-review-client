@@ -1,7 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider";
 
 const Login = () => {
+  const { user, login } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from.pathname || "/";
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log("clicked");
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    login(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        if (user.uid) {
+        }
+        navigate(from, { replace: true });
+      })
+      .catch((err) => console.error(err));
+  };
   return (
     <div>
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 dark:bg-gray-900 dark:text-gray-100">
@@ -12,8 +36,7 @@ const Login = () => {
           </p>
         </div>
         <form
-          novalidate=""
-          action=""
+          onSubmit={handleLogin}
           className="space-y-12 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-4">
@@ -25,7 +48,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="leroy@jenkins.com"
+                placeholder="enter Your Email"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
               />
             </div>
@@ -34,31 +57,23 @@ const Login = () => {
                 <label for="password" className="text-sm">
                   Password
                 </label>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="text-xs hover:underline dark:text-gray-400"
-                >
-                  Forgot password?
-                </a>
               </div>
               <input
                 type="password"
                 name="password"
                 id="password"
-                placeholder="*****"
+                placeholder="Enter password"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
               />
             </div>
           </div>
           <div className="space-y-2">
             <div>
-              <button
-                type="button"
-                className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900"
-              >
-                Sign in
-              </button>
+              <input
+                type="submit"
+                Value="Submit"
+                className="w-full btn btn-success px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900"
+              />
             </div>
             <p className="px-6 text-sm text-center dark:text-gray-400">
               Don't have an account yet?
