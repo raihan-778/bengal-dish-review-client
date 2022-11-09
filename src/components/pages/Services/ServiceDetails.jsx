@@ -1,17 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 import Reviews from "../Reviews/Reviews";
 
 const ServiceDetails = () => {
   const { user } = useContext(AuthContext);
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/reviews")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setReviews(data);
+        console.log(reviews);
+      });
+  }, []);
 
   const singleDish = useLoaderData();
   console.log(singleDish);
   const {
     title,
     _id,
-    reviews,
     foodType,
     variation,
     serviceName,
@@ -57,8 +67,8 @@ const ServiceDetails = () => {
       {/* review section*/}
       <h2 className="text-3xl font-bold text-conter">Customer reviews</h2>
       <div className="grid p-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {reviews.map((singleReview) => (
-          <Reviews key={_id} singleReview={singleReview}></Reviews>
+        {reviews.map((review) => (
+          <Reviews key={_id} review={review}></Reviews>
         ))}
       </div>
       <div className="mb-3">

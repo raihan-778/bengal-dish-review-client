@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 
 const AddService = () => {
   const handleAddService = (e) => {
@@ -7,17 +8,27 @@ const AddService = () => {
     const serviceName = form.serviceName.value;
     const variation = form.variation.value;
     const foodType = form.foodType.value;
+    const price = form.price.value;
     const description = form.message.value;
     const title = form.title.value;
-    console.log(serviceName, variation, foodType, imgUrl, email, message);
+    const imgUrl = form.imgURL.value;
+    console.log(
+      serviceName,
+      variation,
+      foodType,
+      imgUrl,
+      price,
+      description,
+      title
+    );
     const service = {
       serviceName,
       description,
+      price,
       foodType,
       variation,
-      img: imgUrl,
+      image: imgUrl,
       title,
-      text: message,
     };
     fetch(`http://localhost:5000/dishes`, {
       method: "POST",
@@ -49,6 +60,12 @@ const AddService = () => {
             type="text"
             name="variation"
             placeholder="enter variation"
+            className="input input-bordered w-full max-w-xs"
+          />
+          <input
+            type="text"
+            name="price"
+            placeholder="enter price"
             className="input input-bordered w-full max-w-xs"
           />
 

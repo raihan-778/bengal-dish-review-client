@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 
-const Reviews = ({ singleReview }) => {
-  console.log(singleReview);
-  const { author, date, email, img, rating, review } = singleReview;
+const Reviews = ({ review }) => {
+  console.log(review);
+  const { author, email, serviceName, img, rating, text } = review;
   return (
     <div>
       <div className="container flex flex-col w-full max-w-lg p-6 mx-auto divide-y rounded-md divide-gray-700 dark:bg-gray-900 dark:text-gray-100">
@@ -17,9 +17,8 @@ const Reviews = ({ singleReview }) => {
             </div>
             <div>
               <h4 className="font-bold">{author}</h4>
-              <h6 className="font-bold">{date}</h6>
               <h6 className="font-bold">{email}</h6>
-              <span className="text-xs dark:text-gray-400">2 days ago</span>
+              <span className="text-xs dark:text-gray-400">{serviceName}</span>
             </div>
           </div>
           <div className="flex items-center space-x-2 dark:text-yellow-500">
@@ -34,7 +33,7 @@ const Reviews = ({ singleReview }) => {
           </div>
         </div>
         <div className="p-4 space-y-2 text-sm dark:text-gray-400">
-          <p>{review}</p>
+          <p>{text}</p>
         </div>
       </div>
     </div>

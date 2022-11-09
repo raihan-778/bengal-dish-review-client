@@ -5,6 +5,7 @@ import Home from "../../components/pages/Home/Home";
 import Login from "../../components/pages/Login/Login";
 import Register from "../../components/pages/Register/Register";
 import AddReview from "../../components/pages/Reviews/AddReview";
+import Reviews from "../../components/pages/Reviews/Reviews";
 import AddService from "../../components/pages/Services/addService";
 import ServiceDetails from "../../components/pages/Services/ServiceDetails";
 import Services from "../../components/pages/Services/Services";
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
       {
         path: "/addservice",
         element: <AddService></AddService>,
+      },
+      {
+        path: "/reviews",
+        element: <Reviews></Reviews>,
+        loader: () => fetch("http://localhost:5000/reviews"),
       },
       {
         path: "/addreview/:id",
