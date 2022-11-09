@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 import Reviews from "../Reviews/Reviews";
 
@@ -62,7 +62,9 @@ const ServiceDetails = () => {
         ))}
       </div>
       <div className="mb-3">
-        <button className="btn btn-outline btn-warning">Add a Review</button>
+        <Link to={`/addreview/${_id}`}>
+          <button className="btn btn-outline btn-warning">Add a Review</button>
+        </Link>
       </div>
     </div>
   );

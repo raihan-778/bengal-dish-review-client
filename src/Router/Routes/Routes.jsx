@@ -4,6 +4,7 @@ import Blog from "../../components/pages/Blog/Blog";
 import Home from "../../components/pages/Home/Home";
 import Login from "../../components/pages/Login/Login";
 import Register from "../../components/pages/Register/Register";
+import AddReview from "../../components/pages/Reviews/AddReview";
 import AddService from "../../components/pages/Services/addService";
 import ServiceDetails from "../../components/pages/Services/ServiceDetails";
 import Services from "../../components/pages/Services/Services";
@@ -35,6 +36,12 @@ const router = createBrowserRouter([
       {
         path: "/addservice",
         element: <AddService></AddService>,
+      },
+      {
+        path: "/addreview/:id",
+        element: <AddReview></AddReview>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/dishes/${params.id}`),
       },
       {
         path: `/servicedetails/:id`,

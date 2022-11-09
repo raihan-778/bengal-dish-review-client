@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 const Reviews = ({ singleReview }) => {
   console.log(singleReview);
