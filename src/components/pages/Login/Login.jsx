@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const Login = () => {
-  const { user, login } = useContext(AuthContext);
+  const { user, setLoading, login } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log("clicked");
+
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
@@ -21,10 +22,12 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         if (user.uid) {
+          toast.success("Login successfully");
         }
         navigate(from, { replace: true });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(err))
+      .finally(setLoading(false));
   };
   return (
     <div>
