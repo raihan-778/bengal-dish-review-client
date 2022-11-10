@@ -71,9 +71,24 @@ const ServiceDetails = () => {
         ))}
       </div>
       <div className="mb-3">
-        <Link to={`/addreview/${_id}`}>
-          <button className="btn btn-outline btn-warning">Add a Review</button>
-        </Link>
+        {!user ? (
+          <>
+            <h2 className="text-center text-4xl font-semibold text-orange-600">
+              Please Login First to give your won review
+            </h2>
+            <button className="btn btn-outline btn-accent mt-5">
+              <Link to="login">Login</Link>
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to={`/addreview/${_id}`}>
+              <button className="btn btn-outline btn-warning">
+                Add a Review
+              </button>
+            </Link>
+          </>
+        )}
       </div>
     </div>
   );
