@@ -1,7 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const MyReviewCard = ({ myReview }) => {
-  const { serviceName, text, img, author, email } = myReview;
+const MyReviewCard = ({ myReview, handleDelete }) => {
+  const { serviceName, text, img, _id, author, email } = myReview;
+  console.log(myReview);
+
   return (
     <div>
       <div className="card w-90 h-86 bg-base-100 shadow-xl">
@@ -26,7 +29,13 @@ const MyReviewCard = ({ myReview }) => {
           </p>
           <div className="card-actions">
             <button className="btn btn-primary">Edit Review</button>
-            <button className="btn btn-warning">Delete Review</button>
+
+            <button
+              onClick={() => handleDelete(_id)}
+              className="btn btn-warning"
+            >
+              Delete Review
+            </button>
           </div>
         </div>
       </div>
