@@ -3,8 +3,39 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const Navbar = () => {
-  const { user, logout } = useContext(AuthContext);
-  console.log(user);
+  const { user, logout, setUser, loading, setLoading } =
+    useContext(AuthContext);
+
+  if (user) {
+    console.log(user);
+  }
+  const handleSignOut = () => {
+    logout()
+      .then(() => {})
+      .catch((err) => console.error(err));
+  };
+
+  const menuItems = (
+    <li>
+      {!user?.email ? (
+        <>
+          <Link to="/login">Login</Link>
+        </>
+      ) : (
+        <>
+          <button onClick={handleSignOut} className="btn btn-outline btn-info">
+            LogOut
+          </button>
+          <li>
+            <Link to="/myreviews">My Reviews</Link>
+          </li>
+          <li>
+            <Link to="/addservice">Add Service</Link>
+          </li>
+        </>
+      )}
+    </li>
+  );
 
   return (
     <div>
@@ -13,7 +44,6 @@ const Navbar = () => {
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
-                xmlns=""
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -55,25 +85,7 @@ const Navbar = () => {
                 </a>
               </li>
 
-              <li>
-                {
-                  <>
-                    {user.uid ? (
-                      <>
-                        <small>{user.email}</small>
-                        <button
-                          onClick={logout}
-                          className="btn btn-outline btn-info"
-                        >
-                          LogOut
-                        </button>
-                      </>
-                    ) : (
-                      <Link to="/login">Login</Link>
-                    )}
-                  </>
-                }
-              </li>
+              {menuItems}
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl">Bengle Dish</a>
@@ -91,29 +103,7 @@ const Navbar = () => {
               <Link to="/services">Services</Link>
             </li>
 
-            <li>
-              <>
-                {user.uid ? (
-                  <>
-                    {user.email}
-                    <li>
-                      <Link to="/myreviews">My Reviews</Link>
-                    </li>
-                    <li>
-                      <Link to="/addservice">Add Service</Link>
-                    </li>
-                    <button
-                      onClick={logout}
-                      className="btn btn-outline btn-info"
-                    >
-                      LogOut
-                    </button>
-                  </>
-                ) : (
-                  <Link to="/login">Login</Link>
-                )}
-              </>
-            </li>
+            {menuItems}
           </ul>
         </div>
       </div>

@@ -13,7 +13,7 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   // if (loading) {
@@ -41,23 +41,23 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
 
-  //log out
-  const logout = () => {
-    setLoading(true);
-    return signOut(auth);
-  };
   useEffect(() => {
     const unsubscribed = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
-      if (currentUser) {
+      if (currentUser.uid) {
         setUser(currentUser);
+        console.log(currentUser);
       }
       setLoading(false);
     });
     return () => {
-      unsubscribed();
+      return unsubscribed();
     };
   }, []);
+
+  //log out
+  const logout = () => {
+    return signOut(auth);
+  };
 
   const authInfo = {
     user,
