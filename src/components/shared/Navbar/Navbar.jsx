@@ -20,6 +20,7 @@ const Navbar = () => {
       {!user?.email ? (
         <>
           <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
         </>
       ) : (
         <>
@@ -69,6 +70,13 @@ const Navbar = () => {
             >
               <li>
                 <Link to="/blog">Blog</Link>
+              </li>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+
+              <li>
+                <Link to="/services">Services</Link>
               </li>
               <li tabIndex={0}>
                 <a className="justify-between">

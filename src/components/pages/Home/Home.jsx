@@ -8,7 +8,9 @@ import HomeServices from "./HomeServices";
 const Home = () => {
   const [homeServices, setHomeServices] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/homeDishes`)
+    fetch(
+      `https://b6a11-service-review-server-side-raihan-778.vercel.app/homeDishes`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

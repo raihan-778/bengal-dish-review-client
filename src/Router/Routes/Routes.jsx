@@ -46,7 +46,10 @@ const router = createBrowserRouter([
       {
         path: "/reviews",
         element: <Reviews></Reviews>,
-        loader: () => fetch("http://localhost:5000/reviews"),
+        loader: () =>
+          fetch(
+            "https://b6a11-service-review-server-side-raihan-778.vercel.app/reviews"
+          ),
       },
       {
         path: "/myreviews",
@@ -64,13 +67,17 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/dishes/${params.id}`),
+          fetch(
+            `https://b6a11-service-review-server-side-raihan-778.vercel.app/dishes/${params.id}`
+          ),
       },
       {
         path: `/servicedetails/:id`,
         element: <ServiceDetails></ServiceDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/dishes/${params.id}`),
+          fetch(
+            `https://b6a11-service-review-server-side-raihan-778.vercel.app/dishes/${params.id}`
+          ),
       },
       {
         path: "/blog",

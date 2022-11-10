@@ -30,11 +30,14 @@ const AddService = () => {
       image: imgUrl,
       title,
     };
-    fetch(`http://localhost:5000/dishes`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(service),
-    })
+    fetch(
+      `https://b6a11-service-review-server-side-raihan-778.vercel.app/dishes`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(service),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -25,11 +25,14 @@ const AddReview = () => {
       email,
       text: message,
     };
-    fetch(`http://localhost:5000/reviews`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(review),
-    })
+    fetch(
+      `https://b6a11-service-review-server-side-raihan-778.vercel.app/reviews`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(review),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
