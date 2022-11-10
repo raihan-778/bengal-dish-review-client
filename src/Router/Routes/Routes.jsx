@@ -5,6 +5,7 @@ import Home from "../../components/pages/Home/Home";
 import Login from "../../components/pages/Login/Login";
 import Register from "../../components/pages/Register/Register";
 import AddReview from "../../components/pages/Reviews/AddReview";
+import MyReviews from "../../components/pages/Reviews/MyReviews";
 import Reviews from "../../components/pages/Reviews/Reviews";
 import AddService from "../../components/pages/Services/addService";
 import ServiceDetails from "../../components/pages/Services/ServiceDetails";
@@ -36,7 +37,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addservice",
-        element: <AddService></AddService>,
+        element: (
+          <PrivateRoute>
+            <AddService></AddService>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/reviews",
@@ -44,8 +49,20 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:5000/reviews"),
       },
       {
+        path: "/myreviews",
+        element: (
+          <PrivateRoute>
+            <MyReviews></MyReviews>
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/addreview/:id",
-        element: <AddReview></AddReview>,
+        element: (
+          <PrivateRoute>
+            <AddReview></AddReview>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/dishes/${params.id}`),
       },
@@ -57,11 +74,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/blog",
-        element: (
-          <PrivateRoute>
-            <Blog></Blog>
-          </PrivateRoute>
-        ),
+        element: <Blog></Blog>,
       },
     ],
   },

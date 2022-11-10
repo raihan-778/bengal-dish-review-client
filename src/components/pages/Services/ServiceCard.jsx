@@ -20,8 +20,12 @@ const ServiceCard = ({ service }) => {
           </PhotoProvider>
         </figure>
         <div className="card-body items-center text-center">
-          <h2 className="card-title">Dish Name: {serviceName}</h2>
-          <h4>Dish info: {title}</h4>
+          <h2 className="card-title">
+            <strong>Dish Name:</strong> {serviceName}
+          </h2>
+          <h4>
+            <strong>Dish info:</strong> {title}
+          </h4>
           <p>
             {description.length > 100
               ? description.slice(1, 100) + "..."

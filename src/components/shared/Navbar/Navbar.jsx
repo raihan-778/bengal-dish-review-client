@@ -86,17 +86,22 @@ const Navbar = () => {
             <li>
               <Link to="/">Home</Link>
             </li>
-            <li>
-              <Link to="/addservice">Add Service</Link>
-            </li>
+
             <li>
               <Link to="/services">Services</Link>
             </li>
+
             <li>
               <>
                 {user.uid ? (
                   <>
                     {user.email}
+                    <li>
+                      <Link to="/myreviews">My Reviews</Link>
+                    </li>
+                    <li>
+                      <Link to="/addservice">Add Service</Link>
+                    </li>
                     <button
                       onClick={logout}
                       className="btn btn-outline btn-info"
@@ -110,9 +115,6 @@ const Navbar = () => {
               </>
             </li>
           </ul>
-        </div>
-        <div className="navbar-end">
-          <a className="btn">Get started</a>
         </div>
       </div>
     </div>
