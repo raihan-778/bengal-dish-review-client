@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
+import AddReview from "../Reviews/AddReview";
 import Reviews from "../Reviews/Reviews";
 
 const ServiceDetails = () => {
-  const { user } = useContext(AuthContext);
+  const { user, setLoading } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -16,6 +17,7 @@ const ServiceDetails = () => {
         console.log(data);
         setReviews(data);
         console.log(reviews);
+        setLoading(false);
       });
   }, []);
 
@@ -77,11 +79,12 @@ const ServiceDetails = () => {
               Please Login First to give your won review
             </h2>
             <button className="btn btn-outline btn-accent mt-5">
-              <Link to="login">Login</Link>
+              <Link to="/login">Login</Link>
             </button>
           </>
         ) : (
           <>
+            {/* <AddReview></AddReview> */}
             <Link to={`/addreview/${_id}`}>
               <button className="btn btn-outline btn-warning">
                 Add a Review

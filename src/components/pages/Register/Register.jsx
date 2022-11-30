@@ -5,11 +5,14 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const Register = () => {
-  const { user, googleSignUp, signUp } = useContext(AuthContext);
+  const { user, setLoading, googleSignUp, signUp } = useContext(AuthContext);
+
+  
 
   const googleProvider = new GoogleAuthProvider();
 
   const handleSubmit = (e) => {
+   
     e.preventDefault();
 
     const form = e.target;

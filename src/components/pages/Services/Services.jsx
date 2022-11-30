@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../context/AuthProvider";
 import ServiceCard from "./ServiceCard";
 
 const Services = () => {
   let [services, setServices] = useState([]);
+  const { loading, setLoading } = useContext(AuthContext);
+
   useEffect(() => {
+    setLoading(true);
     fetch(
       "https://b6a11-service-review-server-side-raihan-778.vercel.app/dishes"
     )

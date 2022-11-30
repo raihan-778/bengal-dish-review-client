@@ -7,12 +7,6 @@ const MyReviews = () => {
   const [myReviews, setMyReviews] = useState([]);
   const { user, loading, setLoading } = useContext(AuthContext);
 
-  // if (loading) {
-  //   return (
-  //     <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
-  //   );
-  // }
-
   useEffect(() => {
     fetch(
       `https://b6a11-service-review-server-side-raihan-778.vercel.app/myreviews?email=${user?.email}`
@@ -21,10 +15,9 @@ const MyReviews = () => {
       .then((data) => {
         console.log(data);
         setMyReviews(data);
-        console.log(myReviews);
       });
   }, [user?.email]);
-
+  //Delete Review
   const handleDelete = (id) => {
     const proceed = window.confirm(
       "Are you sure you want to delete this review?"
@@ -47,8 +40,36 @@ const MyReviews = () => {
     }
   };
 
+  // edit review
+  const handleStatusUpdate = (id) => {
+    fetch(
+      `https://b6a11-service-review-server-side-raihan-778.vercel.app/reviews/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ text: "approved" }),
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          const remaining = myReviews.filter((odr) => odr._id !== id);
+          const approving = myReviews.find((odr) => odr._id === id);
+          approving.text = "Approved";
+          const newReviews = [...remaining, approving];
+          console.log(approving);
+          setMyReviews(newReviews);
+        }
+      });
+  };
+
   return (
     <div>
+
+      
       <h2 className="tex-3xl font-semibold mb-3">
         {" "}
         Your have Total{" "}
@@ -63,6 +84,7 @@ const MyReviews = () => {
         {myReviews.map((myReview) => (
           <MyReviewCard
             key={myReview._id}
+            handleStatusUpdate={handleStatusUpdate}
             handleDelete={handleDelete}
             myReview={myReview}
           ></MyReviewCard>

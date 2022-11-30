@@ -5,12 +5,18 @@ import { AuthContext } from "../../../context/AuthProvider";
 
 const Login = () => {
   const { user, loading, setLoading, login } = useContext(AuthContext);
+  if (loading) {
+    return (
+      <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+    );
+  }
+
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from.pathname || "/";
 
   const handleLogin = (e) => {
-    setLoading(true);
+    setLoading(false);
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -19,13 +25,12 @@ const Login = () => {
 
     login(email, password)
       .then((result) => {
-        const currentUser = result.user;
-        console.log(currentUser);
-        if (currentUser.uid) {
+        const user = result.user;
+        if (user?.email) {
           toast.success("Login successfully");
           navigate(from, { replace: true });
-          setLoading(false);
           form.reset();
+          setLoading(false);
         }
       })
       .catch((err) => {

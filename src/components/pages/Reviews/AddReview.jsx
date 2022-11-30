@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../../context/AuthProvider";
 
 const AddReview = () => {
+  const { user, loading, setLoading } = useContext(AuthContext);
+  setLoading(false);
   const { _id, serviceName } = useLoaderData();
   const handleAddReview = (e) => {
     e.preventDefault();
+
     const form = e.target;
 
     const name = `${form.firstName.value} ${form.lastName.value}`;
 
     // const email = user?.email || "unregistered"
     const email = form.email.value;
+    const date = form.date.value;
     const imgUrl = form.imgURL.value;
     const message = form.message.value;
     const rating = form.rating.value;
@@ -23,6 +28,7 @@ const AddReview = () => {
       img: imgUrl,
       rating: rating,
       email,
+      date,
       text: message,
     };
     fetch(
@@ -41,7 +47,9 @@ const AddReview = () => {
           form.reset();
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (
@@ -77,6 +85,12 @@ const AddReview = () => {
             type="text"
             name="rating"
             placeholder="Enter rating"
+            className="input input-bordered w-full max-w-xs"
+          />
+          <input
+            type="date"
+            name="date"
+            placeholder="Enter date"
             className="input input-bordered w-full max-w-xs"
           />
         </div>
