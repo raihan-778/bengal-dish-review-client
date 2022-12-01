@@ -68,8 +68,6 @@ const MyReviews = () => {
 
   return (
     <div>
-
-      
       <h2 className="tex-3xl font-semibold mb-3">
         {" "}
         Your have Total{" "}

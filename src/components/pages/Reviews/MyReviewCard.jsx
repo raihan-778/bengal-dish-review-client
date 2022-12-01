@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 
 const MyReviewCard = ({ myReview, handleDelete, handleStatusUpdate }) => {
   const { serviceName, text, date, img, _id, author, email } = myReview;
@@ -7,27 +6,6 @@ const MyReviewCard = ({ myReview, handleDelete, handleStatusUpdate }) => {
 
   // edit review
   // edit review
-  const handleStatusUpdate = (id) => {
-    fetch(`https://localhost:5000/reviews/${id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({ text: "approved" }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          const remaining = myReviews.filter((odr) => odr._id !== id);
-          const approving = myReviews.find((odr) => odr._id === id);
-          approving.text = "Approved";
-          const newReviews = [...remaining, approving];
-          console.log(approving);
-          setMyReviews(newReviews);
-        }
-      });
-  };
 
   return (
     <div>
@@ -74,7 +52,7 @@ const MyReviewCard = ({ myReview, handleDelete, handleStatusUpdate }) => {
                 >
                   ✕
                 </label>
-                <form onSubmit={handleStatusUpdate}>
+                <form onSubmit={() => handleStatusUpdate}>
                   <input
                     className="bg-slate-200 text-slate-200"
                     type="text"
