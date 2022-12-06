@@ -1,6 +1,6 @@
 # b6a11-service-review-client-side-raihan-778
 b6a11-service-review-client-side-raihan-778 created by GitHub Classroom
-# Live site link: https://bangle-dish.web.app/
+# Live site link: https://bangla-dish.web.app/
 # This is a home made food selling site, Build in React Library.
 # I have used mongodb as database in this project.
 # Firebase is used as authentication system in this project.
