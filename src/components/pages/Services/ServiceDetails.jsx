@@ -3,12 +3,14 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 import AddReview from "../Reviews/AddReview";
 import Reviews from "../Reviews/Reviews";
+import LoadingSpinner from "../../shared/LoadingSpinner/LoadingSpinner";
 
 const ServiceDetails = () => {
-  const { user, setLoading } = useContext(AuthContext);
+  const { user, loading, setLoading } = useContext(AuthContext);
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
+    setLoading(true);
     fetch(
       "https://b6a11-service-review-server-side-raihan-778.vercel.app/reviews"
     )
@@ -33,7 +35,10 @@ const ServiceDetails = () => {
     price,
     description,
   } = singleDish;
-
+  
+  if (loading) {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
   return (
     <div>
       {/* service details */}

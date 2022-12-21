@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
+import LoadingSpinner from "../../shared/LoadingSpinner/LoadingSpinner";
 import ServiceCard from "./ServiceCard";
 
 const Services = () => {
@@ -15,8 +16,12 @@ const Services = () => {
       .then((data) => {
         console.log(data);
         setServices(data);
+        setLoading(false);
       });
   }, []);
+  if (loading) {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
   return (
     <div className="grid p-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
       {services.map((service) => (

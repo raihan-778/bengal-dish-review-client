@@ -7,14 +7,14 @@ const ServiceCard = ({ service }) => {
 
   return (
     <div>
-      <div className="card w-82 h-90 bg-base-100 shadow-xl">
+      <div className="card w-82 h-[600px] bg-base-100 shadow-xl">
         <figure className="px-10 pt-10">
           <PhotoProvider>
             <PhotoView src={image}>
               <img
                 src={image}
                 alt="food-dish"
-                className="rounded-xl w-72 h-64"
+                className="rounded-xl w-72 h-[200px]"
               />
             </PhotoView>
           </PhotoProvider>

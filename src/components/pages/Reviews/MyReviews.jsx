@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../context/AuthProvider";
 import MyReviewCard from "./MyReviewCard";
+import LoadingSpinner from "../../shared/LoadingSpinner/LoadingSpinner";
 
 const MyReviews = () => {
   const [myReviews, setMyReviews] = useState([]);
   const { user, loading, setLoading } = useContext(AuthContext);
 
   useEffect(() => {
+    setLoading(true);
     fetch(
       `https://b6a11-service-review-server-side-raihan-778.vercel.app/myreviews?email=${user?.email}`
     )
@@ -15,6 +17,7 @@ const MyReviews = () => {
       .then((data) => {
         console.log(data);
         setMyReviews(data);
+        setLoading(false);
       });
   }, [user?.email]);
   //Delete Review
@@ -66,7 +69,9 @@ const MyReviews = () => {
         }
       });
   };
-
+  if (loading) {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
   return (
     <div>
       <h2 className="tex-3xl font-semibold mb-3">

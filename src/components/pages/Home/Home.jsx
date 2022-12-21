@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider";
 import FeaturesCard from "../../FeaturesCard/FeaturesCard";
-
+import LoadingSpinner from "../../shared/LoadingSpinner/LoadingSpinner";
 import Header from "../Header/Header";
 import HomeServices from "./HomeServices";
 
 const Home = () => {
+  const { loading, setLoading } = useContext(AuthContext);
   const [homeServices, setHomeServices] = useState([]);
   useEffect(() => {
+    setLoading(true);
     fetch(
       `https://b6a11-service-review-server-side-raihan-778.vercel.app/homeDishes`
     )
@@ -16,9 +20,13 @@ const Home = () => {
         console.log(data);
         setHomeServices(data);
         console.log(homeServices);
+        setLoading(false);
       });
   }, []);
 
+  if (loading) {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
   return (
     <div>
       <Header></Header>
