@@ -9,16 +9,13 @@ const FeaturesCard = () => {
             <h2 className="text-3xl font-bold tracking-tight text-center sm:text-5xl dark:text-gray-50">
               Our Happy Customer are Our Strength.
             </h2>
-            <p className="max-w-3xl mx-auto mt-4 text-xl text-center dark:text-gray-400">
-              Have a look Please!
-            </p>
           </div>
 
           <div>
-            <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
+            <div className="grid  lg:gap-8 lg:grid-cols-2 lg:items-center">
               <section className="p-6 my-6 dark:bg-gray-800 dark:text-gray-100">
                 <div className="container grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-4">
-                  <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-900 dark:text-gray-100">
+                  <div className="flex p-4 space-x-4 mx-auto rounded-lg md:space-x-6 dark:bg-gray-900 dark:text-gray-100">
                     <div className="flex justify-center p-2 align-middle rounded-lg sm:p-4 dark:bg-violet-400">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +33,7 @@ const FeaturesCard = () => {
                       <p className="capitalize">Orders</p>
                     </div>
                   </div>
-                  <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-900 dark:text-gray-100">
+                  <div className="flex p-4 space-x-4 mx-auto rounded-lg md:space-x-6 dark:bg-gray-900 dark:text-gray-100">
                     <div className="flex justify-center p-2 align-middle rounded-lg sm:p-4 dark:bg-violet-400">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +54,7 @@ const FeaturesCard = () => {
                       <p className="capitalize">New customers</p>
                     </div>
                   </div>
-                  <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-900 dark:text-gray-100">
+                  <div className="flex p-4 space-x-4 mx-auto rounded-lg md:space-x-6 dark:bg-gray-900 dark:text-gray-100">
                     <div className="flex justify-center p-2 align-middle rounded-lg sm:p-4 dark:bg-violet-400">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +75,7 @@ const FeaturesCard = () => {
                       <p className="capitalize">Growth</p>
                     </div>
                   </div>
-                  <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 dark:bg-gray-900 dark:text-gray-100">
+                  <div className="flex p-4 space-x-4 mx-auto rounded-lg md:space-x-6 dark:bg-gray-900 dark:text-gray-100">
                     <div className="flex justify-center p-2 align-middle rounded-lg sm:p-4 dark:bg-violet-400">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

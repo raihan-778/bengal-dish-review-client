@@ -41,7 +41,7 @@ const MyReviews = () => {
   };
 
   // edit review
-  const handleStatusUpdate = (id) => {
+  const handleStatusUpdate = (id, text) => {
     fetch(
       `https://b6a11-service-review-server-side-raihan-778.vercel.app/reviews/${id}`,
       {
@@ -49,7 +49,7 @@ const MyReviews = () => {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({ text: "approved" }),
+        body: JSON.stringify({ text: text }),
       }
     )
       .then((res) => res.json())
@@ -62,6 +62,7 @@ const MyReviews = () => {
           const newReviews = [...remaining, approving];
           console.log(approving);
           setMyReviews(newReviews);
+          setLoading(false);
         }
       });
   };

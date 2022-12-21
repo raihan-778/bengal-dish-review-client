@@ -36,14 +36,12 @@ const MyReviewCard = ({ myReview, handleDelete, handleStatusUpdate }) => {
             {/* modal */}
             {/* The button to open modal */}
 
-            <div></div>
-
-            <label htmlFor="my-modal-3" className="btn btn-primary">
+            {/* <label htmlFor="my-modal-3" className="btn btn-primary">
               Edit Review
-            </label>
+            </label> */}
 
             {/* Put this part before </body> tag */}
-            <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+            {/* <input type="checkbox" id="my-modal-3" className="modal-toggle" />
             <div className="modal">
               <div className="modal-box relative">
                 <label
@@ -62,7 +60,7 @@ const MyReviewCard = ({ myReview, handleDelete, handleStatusUpdate }) => {
                   <input type="submit" value="Save" />
                 </form>
               </div>
-            </div>
+            </div> */}
             {/* modal */}
 
             <button

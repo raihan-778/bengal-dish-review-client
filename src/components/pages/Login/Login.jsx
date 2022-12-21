@@ -1,17 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const Login = () => {
   const { user, loading, setLoading, login } = useContext(AuthContext);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from.pathname || "/";
 
+  if (loading) {
+    return (
+      <div className="w-12 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+    );
+  }
+
   const handleLogin = (e) => {
-    setLoading(false);
+    setLoading(true);
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -30,6 +37,7 @@ const Login = () => {
       })
       .catch((err) => {
         console.error(err);
+        setErrorMsg("Please enter a Valid email & password");
         setLoading(false);
       })
       .finally(setLoading(false));
@@ -75,6 +83,9 @@ const Login = () => {
             />
           </div>
         </div>
+        {!user?.email && (
+          <h6 className="text-orange-700 font-semibold">{errorMsg}</h6>
+        )}
         <div className="space-y-2">
           <div>
             <input
@@ -83,6 +94,7 @@ const Login = () => {
               className="w-full btn btn-success px-8 py-3 font-semibold rounded-md dark:bg-violet-400 dark:text-gray-900"
             />
           </div>
+
           <p className="px-6 text-sm text-center dark:text-gray-400">
             Don't have an account yet?
             <Link
