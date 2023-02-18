@@ -3,7 +3,7 @@ import React from "react";
 const FeaturesCard = () => {
   return (
     <div>
-      <section className="bg-sky-900 dark:text-gray-100 m-3 rounded-xl">
+      <section className="bg-[#00FFF6] text-[#0f0f0f] dark:text-gray-100 m-3 rounded-xl">
         <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-center sm:text-5xl dark:text-gray-50">
@@ -105,10 +105,10 @@ const FeaturesCard = () => {
         </div>
       </section>
       {/* Our facilities */}
-      <section className=" bg-sky-900 p-3 rounded-lg m-3">
+      <section className=" bg-[#00FFF6] p-3 rounded-lg m-3">
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 dark:bg-gray-800 dark:text-gray-100">
           <h2 className="mb-8 text-4xl font-bold leading-none text-center">
-            What do we have to offer?
+            What do we offer.
           </h2>
           <ul className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
             <li className="flex items-center space-x-2">
@@ -120,7 +120,9 @@ const FeaturesCard = () => {
                 <path d="M426.072,86.928A238.75,238.75,0,0,0,88.428,424.572,238.75,238.75,0,0,0,426.072,86.928ZM257.25,462.5c-114,0-206.75-92.748-206.75-206.75S143.248,49,257.25,49,464,141.748,464,255.75,371.252,462.5,257.25,462.5Z"></path>
                 <polygon points="221.27 305.808 147.857 232.396 125.23 255.023 221.27 351.063 388.77 183.564 366.142 160.937 221.27 305.808"></polygon>
               </svg>
-              <span>100% Quality foods.</span>
+              <span className="font-semibold text-2xl">
+                100% Quality foods.
+              </span>
             </li>
             <li className="flex items-center space-x-2">
               <svg
@@ -131,7 +133,7 @@ const FeaturesCard = () => {
                 <path d="M426.072,86.928A238.75,238.75,0,0,0,88.428,424.572,238.75,238.75,0,0,0,426.072,86.928ZM257.25,462.5c-114,0-206.75-92.748-206.75-206.75S143.248,49,257.25,49,464,141.748,464,255.75,371.252,462.5,257.25,462.5Z"></path>
                 <polygon points="221.27 305.808 147.857 232.396 125.23 255.023 221.27 351.063 388.77 183.564 366.142 160.937 221.27 305.808"></polygon>
               </svg>
-              <span>Delivery on Time. </span>
+              <span className="font-semibold text-2xl">Delivery on Time. </span>
             </li>
             <li className="flex items-center space-x-2">
               <svg
@@ -142,7 +144,9 @@ const FeaturesCard = () => {
                 <path d="M426.072,86.928A238.75,238.75,0,0,0,88.428,424.572,238.75,238.75,0,0,0,426.072,86.928ZM257.25,462.5c-114,0-206.75-92.748-206.75-206.75S143.248,49,257.25,49,464,141.748,464,255.75,371.252,462.5,257.25,462.5Z"></path>
                 <polygon points="221.27 305.808 147.857 232.396 125.23 255.023 221.27 351.063 388.77 183.564 366.142 160.937 221.27 305.808"></polygon>
               </svg>
-              <span>Home Taste Assurence</span>
+              <span className="font-semibold text-2xl">
+                Home Taste Assurence
+              </span>
             </li>
             <li className="flex items-center space-x-2">
               <svg
@@ -153,7 +157,7 @@ const FeaturesCard = () => {
                 <path d="M426.072,86.928A238.75,238.75,0,0,0,88.428,424.572,238.75,238.75,0,0,0,426.072,86.928ZM257.25,462.5c-114,0-206.75-92.748-206.75-206.75S143.248,49,257.25,49,464,141.748,464,255.75,371.252,462.5,257.25,462.5Z"></path>
                 <polygon points="221.27 305.808 147.857 232.396 125.23 255.023 221.27 351.063 388.77 183.564 366.142 160.937 221.27 305.808"></polygon>
               </svg>
-              <span>Free Home delivery For a certain amount of orders</span>
+              <span className="font-semibold text-2xl">Free Home delivery</span>
             </li>
             <li className="flex items-center space-x-2">
               <svg
@@ -164,7 +168,7 @@ const FeaturesCard = () => {
                 <path d="M426.072,86.928A238.75,238.75,0,0,0,88.428,424.572,238.75,238.75,0,0,0,426.072,86.928ZM257.25,462.5c-114,0-206.75-92.748-206.75-206.75S143.248,49,257.25,49,464,141.748,464,255.75,371.252,462.5,257.25,462.5Z"></path>
                 <polygon points="221.27 305.808 147.857 232.396 125.23 255.023 221.27 351.063 388.77 183.564 366.142 160.937 221.27 305.808"></polygon>
               </svg>
-              <span>Quality Packaging</span>
+              <span className="font-semibold text-2xl">Quality Packaging</span>
             </li>
             <li className="flex items-center space-x-2">
               <svg
@@ -175,7 +179,9 @@ const FeaturesCard = () => {
                 <path d="M426.072,86.928A238.75,238.75,0,0,0,88.428,424.572,238.75,238.75,0,0,0,426.072,86.928ZM257.25,462.5c-114,0-206.75-92.748-206.75-206.75S143.248,49,257.25,49,464,141.748,464,255.75,371.252,462.5,257.25,462.5Z"></path>
                 <polygon points="221.27 305.808 147.857 232.396 125.23 255.023 221.27 351.063 388.77 183.564 366.142 160.937 221.27 305.808"></polygon>
               </svg>
-              <span>Unique taste experience</span>
+              <span className="font-semibold text-2xl">
+                Unique taste experience
+              </span>
             </li>
           </ul>
         </div>

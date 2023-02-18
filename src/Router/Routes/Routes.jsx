@@ -31,10 +31,6 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
-      {
-        path: "/animation-nav",
-        element: <AnimationNav></AnimationNav>,
-      },
 
       {
         path: "/services",

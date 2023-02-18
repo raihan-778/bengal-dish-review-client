@@ -7,7 +7,7 @@ import "react-photo-view/dist/react-photo-view.css";
 
 function App() {
   return (
-    <div className="App" data-theme="dark">
+    <div className="App" data-theme="light">
       <RouterProvider router={router}></RouterProvider>
       <ToastContainer
         position="top-center"
