@@ -12,6 +12,7 @@ import ServiceDetails from "../../components/pages/Services/ServiceDetails";
 import Services from "../../components/pages/Services/Services";
 import Root from "../../Layouts/Root";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AnimationNav from "../../components/shared/Navbar/AnimationNav/AnimationNav";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/animation-nav",
+        element: <AnimationNav></AnimationNav>,
       },
 
       {
